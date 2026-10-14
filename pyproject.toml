@@ -12,6 +12,11 @@ license-files = ["LICENSE", "NOTICE.md"]
 requires-python = ">=3.10"
 dependencies = ["mujoco>=3.4,<4", "numpy>=1.26,<3", "pymavlink>=2.4.49,<3"]
 
+[project.urls]
+Repository = "https://github.com/Holiday-66/px4-mujoco-bridge"
+Documentation = "https://github.com/Holiday-66/px4-mujoco-bridge/blob/main/docs/setup.md"
+Issues = "https://github.com/Holiday-66/px4-mujoco-bridge/issues"
+
 [project.optional-dependencies]
 test = ["pytest>=8,<9", "build>=1,<2"]
 

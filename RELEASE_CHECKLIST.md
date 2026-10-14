@@ -1,33 +1,49 @@
-# Release checklist — local preparation only
+# Initial publication checklist
 
 Intended destination: **Holiday-66/px4-mujoco-bridge**.
-The maintainer confirmed the name and selected **BSD-3-Clause**. Ownership and
-authority to release the code remain unconfirmed. Do not create the public
-repository, push this draft, publish a package, or upload its artifacts yet.
+The maintainer confirmed the name, selected **BSD-3-Clause**, and identified the
+implementation as an independent personal project. Technical validation passed;
+publication was explicitly approved on 2026-10-14. Remote creation and the first
+push are still pending; local approval does not mean an upload has occurred.
 
 ## Required before publication
 
-- [ ] Confirm who owns the implementation and who can authorize its release.
-- [ ] Resolve any employer, university, collaborator or funding obligations.
+- [x] Record the maintainer's statement that this was independently developed,
+  not work for a university or company. This is not an independent legal audit.
 - [x] Select BSD-3-Clause for the bridge's own code.
 - [x] Prepare standard LICENSE text, package license metadata and updated notices.
 - [x] Replace the LICENSE placeholder with the selected notice: `Copyright (c) 2026, HolidayHan`.
-- [ ] Review dependency licenses and preserve any required notices.
-- [ ] Review every tracked file and the complete standalone Git history.
-- [ ] Confirm no credentials, personal paths, confidential source, CAD, logs,
+- [x] Review installed dependency notices; distinguish pymavlink's LGPL library
+  from its generated-code exception. No dependencies are vendored in the wheel.
+- [x] Review every tracked file and the complete standalone Git history.
+- [x] Check for credentials, personal paths, confidential source, CAD, logs,
   videos, firmware binaries, upstream checkout or inherited project history.
-- [ ] Reproduce installation on a clean supported Ubuntu machine.
-- [ ] Verify interactive MuJoCo viewing and QGC connection; record QGC version.
-- [ ] Re-run unit tests, wheel installation and the pinned PX4 smoke/full demo.
-- [ ] Run `python scripts/check_release.py --ready`; perform a separate manual
-  rights/security review (the script cannot determine ownership).
-- [ ] Obtain explicit release authority and publication approval; update the
-  corresponding confirmation markers in NOTICE only after that confirmation.
-- [ ] Only then create the agreed GitHub repository and attach its remote.
-- [ ] Configure a private security-reporting route, verify CI, and update docs
-  from draft language to actual release/clone instructions.
+  The maintainer explicitly requested preserving existing commit attribution.
+- [x] Reproduce installation/build and installed-wheel smoke/full flight in
+  fresh Ubuntu 22.04 container userspace. A fresh desktop/VM is not claimed.
+- [x] Verify rendered MuJoCo flight and QGC connection/parameter display.
+  The exact existing QGC build could not be established; no manual QGC flight
+  command or version-specific support claim is made.
+- [x] Re-run 40 unit tests, wheel installation and the pinned PX4 smoke/full demo
+  on the host and in the clean container; inspect packaged files and notices.
+- [x] Run `python scripts/check_release.py --ready` and the scoped manual
+  source/history/dependency review. Ownership relies on the maintainer's
+  declaration; this is not independent legal or comprehensive security clearance.
+- [x] Record final publication approval after validation in NOTICE.
+- [x] Prepare public-facing clone/setup instructions and repository links.
+- [x] Configure the local `origin` for `Holiday-66/px4-mujoco-bridge` using the
+  verified existing GitHub SSH identity.
+- [ ] Create the agreed empty public GitHub repository.
+- [ ] Push only this standalone repository's `main` branch and verify its SHA.
+- [ ] Enable private vulnerability reporting in repository settings.
+- [ ] Verify GitHub Actions for Python 3.10 and 3.12 after the first push.
 
-## Prepared in this draft
+Technical validation passed on 2026-10-14; see the [record](docs/validation.md).
+The local-draft and pending-publication markers have now been resolved with the
+maintainer's approval. GitHub repository state, push completion, and remote CI
+must be verified separately. No package, container, or firmware upload is planned.
+
+## Included in the source repository
 
 - Standalone src-layout Python package and original generic quadrotor model.
 - Stock-PX4 launcher, loopback MAVLink transport, isolated run data, opt-in demo.

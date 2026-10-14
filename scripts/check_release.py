@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Audit the standalone draft without publishing or changing any file."""
+"""Audit the standalone source tree without publishing or changing any file."""
 import argparse
 import os
 from pathlib import Path
@@ -94,7 +94,7 @@ def audit(ready=False):
                     failures.append(f"{name}: missing or external local link {target}")
     for required in ALLOWED:
         if required not in names:
-            failures.append(f"{required}: required draft file missing")
+            failures.append(f"{required}: required release file missing")
     if ready:
         failures.extend(release_marker_errors(*(
             (ROOT / name).read_text() if (ROOT / name).is_file() else ""
@@ -107,12 +107,12 @@ def audit(ready=False):
     print(f"PASS: {len(names)} allowlisted text files; no flagged patterns or broken local file links")
     print("This is a limited hygiene check, not ownership clearance or a comprehensive secret scan.")
     if not ready:
-        print("Publication remains pending; --ready additionally checks basic release markers.")
+        print("Use --ready to additionally check recorded publication and license markers.")
     return 0
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--ready", action="store_true", help="Also require release markers (expected to fail for this draft)")
+    parser.add_argument("--ready", action="store_true", help="Also require recorded publication and license markers")
     args = parser.parse_args()
     raise SystemExit(audit(args.ready))

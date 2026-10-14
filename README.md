@@ -6,11 +6,9 @@ normal estimator, flight controllers and allocator; MuJoCo supplies the physical
 plant and simulated sensors. No ROS, Gazebo, custom PX4 patch, CAD download, or
 physical flight controller is needed for the example.
 
-**Local draft — not released.** Intended repository: `Holiday-66/px4-mujoco-bridge`.
-BSD-3-Clause has been selected for the bridge's own code. The [LICENSE](LICENSE)
-uses the maintainer's chosen copyright name, `HolidayHan` (2026). Release-authority
-confirmation and publication approval remain pending. This is not yet a cleared public release.
-See [release checklist](RELEASE_CHECKLIST.md).
+The bridge's own code and generic example are licensed under
+[BSD-3-Clause](LICENSE), copyright 2026 HolidayHan. Dependencies retain their
+own licenses; see [third-party notices](NOTICE.md).
 
 ## What it does
 
@@ -36,6 +34,13 @@ flowchart LR
 ```
 
 ## Quick start
+
+Get the source:
+
+```bash
+git clone https://github.com/Holiday-66/px4-mujoco-bridge.git
+cd px4-mujoco-bridge
+```
 
 Follow [the full setup tutorial](docs/setup.md) first to install the bridge and
 build the pinned PX4 version. From this repository with its virtual environment
@@ -75,14 +80,14 @@ remain open on the same machine.
 | --- | --- |
 | Host | Ubuntu 22.04.5, x86-64 |
 | PX4 | `v1.17.0`, `d6f12ad1c4f70ad3230afd7d86e971421e02fef4` |
-| Bridge Python | 3.10.19 |
+| Bridge Python | 3.10.19 on host; 3.10.12 in clean Ubuntu container |
 | MuJoCo / NumPy / pymavlink | 3.4.0 / 2.2.6 / 2.4.49 |
-| Live validation | Stock build, unarmed lockstep check, takeoff/square/landing demo |
+| Live validation | Native viewer/QGC connection; clean Ubuntu build, wheel installation, unarmed lockstep and complete flight demo |
 
 The launcher checks the PX4 commit and refuses tracked source changes by default.
 Other versions require `--allow-other-px4` and are compatibility experiments, not
 automatically supported. See the [validation record](docs/validation.md) for the
-tested boundaries, including GUI and clean-machine setup items not yet verified.
+tested boundaries and the status of GUI and clean-install checks.
 
 ## Documentation
 

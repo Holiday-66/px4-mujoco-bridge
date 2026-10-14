@@ -27,8 +27,8 @@ jobs:
         env:
           PYTEST_DISABLE_PLUGIN_AUTOLOAD: '1'
         run: python -m pytest -q
-      - name: Draft hygiene check
-        run: python scripts/check_release.py
+      - name: Source hygiene and release-marker check
+        run: python scripts/check_release.py --ready
       - name: Build wheel and source distribution
         run: python -m build
       - name: Check installed wheel contains its model

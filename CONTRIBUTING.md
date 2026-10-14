@@ -1,9 +1,10 @@
 # Contributing and local development
 
-This is an unreleased local draft with BSD-3-Clause selected. Ownership, release
-authorization and contribution acceptance must be settled before public
-contributions are invited. See [notices](NOTICE.md) and the
-[release checklist](RELEASE_CHECKLIST.md).
+Bug reports, documentation improvements and small, tested changes are welcome.
+Use the [issue tracker](https://github.com/Holiday-66/px4-mujoco-bridge/issues)
+for non-sensitive reports, and discuss substantial interface/model changes
+before implementing them. Read the [license and notices](NOTICE.md); only submit
+work you have authority to share. Security concerns follow [SECURITY.md](SECURITY.md).
 
 ## Development checks
 
@@ -14,6 +15,7 @@ python -m pip install -c requirements-tested.txt -e '.[test]'
 env -u PYTHONPATH PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python -m pytest -q
 python -m build
 python scripts/check_release.py
+python scripts/check_release.py --ready
 ```
 
 Tests run headlessly without PX4 or a GPU, but the TCP tests need loopback
@@ -41,10 +43,11 @@ silently relaxing the version guard, disarm gate, loopback binding or timeouts.
 Do not introduce global process-kill commands, automatic force arming, arbitrary
 remote targets or downloaded executable helpers into the quick start.
 
-The GitHub Actions workflow is prepared but has not run remotely. It installs
-the pinned runtime dependencies, runs headless unit tests and builds/checks a
-wheel. It deliberately does not deploy packages, create releases, upload flight
-logs or require credentials. Full PX4 flight testing remains a separate check.
+The [GitHub Actions workflow](https://github.com/Holiday-66/px4-mujoco-bridge/actions)
+installs the pinned runtime dependencies, runs headless unit tests and
+builds/checks a wheel. It deliberately does not deploy packages, create releases,
+upload flight logs or require credentials. Full PX4 flight testing remains a
+separate check; the local validation record does not imply that remote CI passed.
 
 Before contributing assets, confirm ownership and redistribution permission.
 Keep runtime logs, personal paths, environment secrets, binary firmware, upstream

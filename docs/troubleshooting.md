@@ -63,6 +63,10 @@ and disarming, not merely after a takeoff command was accepted.
 - **QGC shows no vehicle:** check its UDP auto-connect/listen port 14550, that
   PX4 is still running, and that both are in the same network namespace.
   TCP 4560 is not a QGC communication link.
+- **QGC marks Radio/Flight Modes as requiring setup:** this example intentionally
+  has no RC and uses `COM_RC_IN_MODE=4`. This was observed while the demo still
+  passed normal PX4 arming checks and completed its flight. Do not force-arm or
+  bypass unrelated preflight failures; inspect PX4's own messages.
 - **Synthetic location near Zurich:** intentional default GPS origin, unrelated
   to where your computer is. The MuJoCo local floor is not a georeferenced map.
 - **Old date in ULog filenames:** intentional fixed synthetic GPS epoch, not a
@@ -79,4 +83,5 @@ Include OS/architecture, Python/package versions, PX4 commit, exact launch
 command (redact personal paths), stock or custom model, `result.json`, and the
 relevant PX4 error lines. State whether `--headless` reproduces it. Do not attach
 credentials, unrelated CAD, real flight logs or sensitive host information.
-There is no public issue tracker until this draft is released.
+Use the [issue tracker](https://github.com/Holiday-66/px4-mujoco-bridge/issues)
+for non-sensitive reports. Follow [SECURITY.md](../SECURITY.md) for vulnerabilities.

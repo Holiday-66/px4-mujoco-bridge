@@ -1,12 +1,14 @@
 # Setup: from an empty workspace to a simulated flight
 
 This tutorial targets native Ubuntu Linux on one machine. The recorded live
-test used Ubuntu 22.04.5 x86-64. Ubuntu 24.04, WSL2, containers, macOS and Windows
-have not been validated for this package. The current QGroundControl AppImage
-has a different OS baseline; see its section below.
+test used Ubuntu 22.04.5 x86-64; installation, stock-PX4 build and headless flight
+were also reproduced in fresh Ubuntu 22.04 container userspace. Ubuntu 24.04,
+WSL2, macOS, Windows, and container-to-host GUI/network forwarding have not been
+validated. The current QGroundControl AppImage has a different OS baseline; see
+its section below.
 
-This local draft is not published yet. Use your provided local checkout for now;
-do not expect a GitHub clone URL or PyPI package to work until release.
+Install from the GitHub source checkout, not from a similarly named PyPI package.
+No PyPI distribution is published by this project.
 
 ## 1. Keep the two repositories separate
 
@@ -32,10 +34,12 @@ sudo apt update
 sudo apt install git python3-venv python3-pip libgl1 libglfw3
 ```
 
-From the bridge checkout, create an isolated environment:
+Clone the bridge into your workspace (skip the clone if you already have it),
+then create an isolated environment:
 
 ```bash
-cd /absolute/path/to/px4-mujoco-bridge
+git clone https://github.com/Holiday-66/px4-mujoco-bridge.git
+cd px4-mujoco-bridge
 python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install --upgrade pip
@@ -111,9 +115,12 @@ starts another simulator. The bridge owns the simulator TCP server itself.
 No edits to PX4 C++, airframe scripts, mixer files or board configuration are
 required. The first build can take several minutes.
 
-The recorded build passed on an existing development host, not on a fresh OS
-image. The system dependency installation procedure above still needs a
-clean-machine reproduction before release.
+The installer and build commands above also passed in a fresh Ubuntu 22.04
+container using Python 3.10.12, GCC 11.4.0 and CMake 3.22.1, with separate build
+and bridge venvs and no Gazebo installation. Only public Git source caches were
+reused; no previous build products or Python environments were used. This is a
+clean-userspace check, not validation of a fresh desktop installation or of
+container-to-host QGC/display networking. See the [validation record](validation.md).
 
 ## 5. Start both applications
 
@@ -186,7 +193,17 @@ an airframe: the launcher already supplies the model's simulated parameters.
 QGC is a telemetry/command client, not the physics bridge. Its absence does not
 prevent `--demo` from flying. A MuJoCo window and a QGC map serve different
 purposes: one renders local physics; the other shows autopilot telemetry.
-QGC interaction was not part of the automated validation.
+The existing host QGC was observed receiving the SITL vehicle and loading its
+parameter summary during a complete viewer/demo flight. PX4 confirmed a valid
+GCS heartbeat on UDP 14550. This was a connection/parameter-display check, not
+validation of manual QGC flight commands; the exact host QGC build was not
+established. See the [validation record](validation.md).
+
+Some QGC builds show a setup warning and mark **Radio** or **Flight Modes** as
+unconfigured for this example. The launcher intentionally sets
+`COM_RC_IN_MODE=4` for an offboard-only simulated vehicle without an RC receiver.
+Do not calibrate a nonexistent RC or disable other arming checks just to clear
+that display. If the demo cannot arm, inspect the actual PX4 preflight messages.
 
 ## Ports and multiple runs
 

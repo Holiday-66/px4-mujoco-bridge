@@ -25,6 +25,14 @@ simulated vehicle. Interrupting or failing the demo stops the owned simulation;
 it is not an emergency landing procedure for real hardware. Cleanup targets
 only the child process group created by the launcher.
 
-No public security-reporting channel exists for this unreleased draft. Contact
-the maintainer privately; do not publish credentials or private assets. Configure
-a private reporting route as part of the release checklist.
+## Reporting a vulnerability
+
+Use **Security → Advisories → Report a vulnerability** on the
+[repository's Security page](https://github.com/Holiday-66/px4-mujoco-bridge/security/advisories)
+when private vulnerability reporting is available. Do not disclose exploit
+details, credentials, or private assets in a public issue.
+
+If the private-report button is not available, open a minimal issue requesting a
+private contact channel without including the vulnerability details. Maintainers
+should enable private vulnerability reporting in repository settings; its
+activation is tracked in [the release checklist](RELEASE_CHECKLIST.md).
