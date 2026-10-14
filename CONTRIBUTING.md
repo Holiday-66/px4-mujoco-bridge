@@ -1,7 +1,9 @@
 # Contributing and local development
 
-This is an unreleased local draft. Contribution acceptance and the release
-license must be settled before public contributions are invited.
+This is an unreleased local draft with BSD-3-Clause selected. Ownership, release
+authorization and contribution acceptance must be settled before public
+contributions are invited. See [notices](NOTICE.md) and the
+[release checklist](RELEASE_CHECKLIST.md).
 
 ## Development checks
 

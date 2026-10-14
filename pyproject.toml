@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=68", "wheel"]
+requires = ["setuptools>=77.0.3", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -7,6 +7,8 @@ name = "px4-mujoco-bridge"
 version = "0.1.0"
 description = "A local Simulator MAVLink bridge between stock PX4 SITL and MuJoCo"
 readme = "README.md"
+license = "BSD-3-Clause"
+license-files = ["LICENSE", "NOTICE.md"]
 requires-python = ">=3.10"
 dependencies = ["mujoco>=3.4,<4", "numpy>=1.26,<3", "pymavlink>=2.4.49,<3"]
 

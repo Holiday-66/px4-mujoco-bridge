@@ -7,8 +7,10 @@ plant and simulated sensors. No ROS, Gazebo, custom PX4 patch, CAD download, or
 physical flight controller is needed for the example.
 
 **Local draft — not released.** Intended repository: `Holiday-66/px4-mujoco-bridge`.
-Ownership and the release license still need confirmation. No license grant or
-public availability is implied. See [release checklist](RELEASE_CHECKLIST.md).
+BSD-3-Clause has been selected for the bridge's own code. The [LICENSE](LICENSE)
+uses the maintainer's chosen copyright name, `HolidayHan` (2026). Release-authority
+confirmation and publication approval remain pending. This is not yet a cleared public release.
+See [release checklist](RELEASE_CHECKLIST.md).
 
 ## What it does
 

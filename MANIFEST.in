@@ -1,4 +1,4 @@
-include .gitignore requirements-tested.txt CONTRIBUTING.md SECURITY.md RELEASE_CHECKLIST.md NOTICE.md
+include .gitignore requirements-tested.txt CONTRIBUTING.md SECURITY.md RELEASE_CHECKLIST.md LICENSE NOTICE.md
 include .github/workflows/tests.yml
 include scripts/check_release.py
 recursive-include docs *.md *.json

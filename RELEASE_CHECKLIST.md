@@ -1,17 +1,18 @@
 # Release checklist — local preparation only
 
 Intended destination: **Holiday-66/px4-mujoco-bridge**.
-The maintainer confirmed the name but has **not** authorized publication or
-confirmed ownership/licensing. Do not create the public repository, push this
-draft, publish a package, or upload its artifacts yet.
+The maintainer confirmed the name and selected **BSD-3-Clause**. Ownership and
+authority to release the code remain unconfirmed. Do not create the public
+repository, push this draft, publish a package, or upload its artifacts yet.
 
 ## Required before publication
 
 - [ ] Confirm who owns the implementation and who can authorize its release.
 - [ ] Resolve any employer, university, collaborator or funding obligations.
-- [ ] Confirm the release license and applicable copyright holders/year.
+- [x] Select BSD-3-Clause for the bridge's own code.
+- [x] Prepare standard LICENSE text, package license metadata and updated notices.
+- [x] Replace the LICENSE placeholder with the selected notice: `Copyright (c) 2026, HolidayHan`.
 - [ ] Review dependency licenses and preserve any required notices.
-- [ ] Add the approved LICENSE and matching package metadata; update NOTICE.
 - [ ] Review every tracked file and the complete standalone Git history.
 - [ ] Confirm no credentials, personal paths, confidential source, CAD, logs,
   videos, firmware binaries, upstream checkout or inherited project history.
@@ -20,7 +21,8 @@ draft, publish a package, or upload its artifacts yet.
 - [ ] Re-run unit tests, wheel installation and the pinned PX4 smoke/full demo.
 - [ ] Run `python scripts/check_release.py --ready`; perform a separate manual
   rights/security review (the script cannot determine ownership).
-- [ ] Obtain explicit approval to publish the reviewed content.
+- [ ] Obtain explicit release authority and publication approval; update the
+  corresponding confirmation markers in NOTICE only after that confirmation.
 - [ ] Only then create the agreed GitHub repository and attach its remote.
 - [ ] Configure a private security-reporting route, verify CI, and update docs
   from draft language to actual release/clone instructions.
@@ -35,4 +37,5 @@ draft, publish a package, or upload its artifacts yet.
 
 Any local Git repository must have a fresh history; never copy an unrelated
 project's `.git` directory or expose a private repository by changing visibility.
-An absent LICENSE is intentional during preparation, not an open-source license.
+The prepared LICENSE uses the maintainer-selected name `HolidayHan`.
+The completed notice and selected SPDX identifier do not themselves clear publication.

@@ -1,9 +1,20 @@
 # Ownership, licensing and third-party components
 
-**Release license pending.** This local draft has not been authorized for public
-distribution. No BSD, MIT or other license is granted by this document.
-Ownership and permission to publish the bridge implementation must be confirmed
-before adding a LICENSE, license metadata or an open-source badge.
+**Selected release license: BSD-3-Clause.** The maintainer approved this license
+choice on 2026-10-14. The standard text is prepared in [LICENSE](LICENSE), and the
+package metadata declares `BSD-3-Clause`. The maintainer selected `HolidayHan`
+as the public copyright name, giving the notice `Copyright (c) 2026, HolidayHan`.
+The placeholder has been replaced. This local draft has not been cleared for
+public distribution.
+
+Ownership confirmation: pending.
+Publication approval: pending.
+
+Confirm release authority and record publication authorization before publishing.
+Selecting a license and public copyright name does not by itself settle
+university, employer, collaborator or funding obligations. The two approval
+markers above must only change to `confirmed` after explicit confirmation; the
+release check verifies those markers but cannot establish legal ownership.
 
 The repository is a standalone community-bridge draft. Its example MJCF uses
 new primitive geometry. No upstream firmware source, binary distribution,
