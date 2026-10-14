@@ -1,0 +1,24 @@
+{
+  "bridge_version": "0.1.0",
+  "mujoco_version": "3.4.0",
+  "instance": 0,
+  "completed": true,
+  "demo": true,
+  "lockstep_seen": true,
+  "startup_steps": 18,
+  "steps": 11226,
+  "max_height_m": 2.104208255834514,
+  "max_horizontal_distance_m": 1.514907300560715,
+  "px4_commit": "d6f12ad1c4f70ad3230afd7d86e971421e02fef4",
+  "px4_dirty": false,
+  "demo_waypoints": 5,
+  "demo_landed_disarmed": true,
+  "simulation_seconds": 44.904000000008914,
+  "demo_phase": "complete",
+  "command_acknowledgments": [
+    {"command": 176, "result": 0},
+    {"command": 176, "result": 0},
+    {"command": 400, "result": 0},
+    {"command": 21, "result": 0}
+  ]
+}

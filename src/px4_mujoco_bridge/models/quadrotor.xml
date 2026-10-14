@@ -1,0 +1,52 @@
+<mujoco model="Community quadrotor">
+  <compiler angle="radian" inertiafromgeom="false"/>
+  <option timestep="0.002" gravity="0 0 -9.80665" integrator="RK4"/>
+  <visual>
+    <global offwidth="1280" offheight="720"/>
+    <headlight ambient="0.35 0.35 0.35" diffuse="0.6 0.6 0.6"/>
+  </visual>
+  <asset>
+    <texture name="grid" type="2d" builtin="checker" rgb1="0.20 0.23 0.26" rgb2="0.30 0.33 0.37" width="512" height="512"/>
+    <material name="floor" texture="grid" texrepeat="8 8" reflectance="0.05"/>
+  </asset>
+  <default>
+    <geom mass="0" friction="0.8 0.02 0.002"/>
+    <site size="0.01" rgba="1 0.6 0.1 1"/>
+    <motor ctrllimited="true" ctrlrange="0 10"/>
+  </default>
+  <worldbody>
+    <light pos="1 -2 5" dir="-0.1 0.3 -1" directional="true"/>
+    <geom name="ground" type="plane" size="20 20 0.1" material="floor"/>
+    <body name="vehicle" pos="0 0 0.12">
+      <freejoint name="free_joint"/>
+      <inertial pos="0 0 0" mass="1.5" diaginertia="0.03 0.03 0.05"/>
+      <geom name="fuselage" type="box" size="0.085 0.06 0.025" rgba="0.8 0.82 0.86 1"/>
+      <geom name="arm_a" type="capsule" fromto="-0.2 -0.2 0 0.2 0.2 0" size="0.013" rgba="0.12 0.14 0.17 1"/>
+      <geom name="arm_b" type="capsule" fromto="-0.2 0.2 0 0.2 -0.2 0" size="0.013" rgba="0.12 0.14 0.17 1"/>
+      <geom name="nose" type="box" pos="0.09 0 0.005" size="0.018 0.03 0.018" rgba="1 0.35 0.1 1"/>
+      <geom name="prop_1" type="cylinder" pos="0.2 -0.2 0.015" size="0.085 0.003" contype="0" conaffinity="0" rgba="0.2 0.65 0.95 0.65"/>
+      <geom name="prop_2" type="cylinder" pos="-0.2 0.2 0.015" size="0.085 0.003" contype="0" conaffinity="0" rgba="0.2 0.65 0.95 0.65"/>
+      <geom name="prop_3" type="cylinder" pos="0.2 0.2 0.015" size="0.085 0.003" contype="0" conaffinity="0" rgba="0.9 0.55 0.2 0.65"/>
+      <geom name="prop_4" type="cylinder" pos="-0.2 -0.2 0.015" size="0.085 0.003" contype="0" conaffinity="0" rgba="0.9 0.55 0.2 0.65"/>
+      <geom type="sphere" pos="0.08 0.05 -0.07" size="0.015"/>
+      <geom type="sphere" pos="0.08 -0.05 -0.07" size="0.015"/>
+      <geom type="sphere" pos="-0.08 0.05 -0.07" size="0.015"/>
+      <geom type="sphere" pos="-0.08 -0.05 -0.07" size="0.015"/>
+      <site name="imu" pos="0 0 0"/>
+      <site name="rotor_1" pos="0.2 -0.2 0"/>
+      <site name="rotor_2" pos="-0.2 0.2 0"/>
+      <site name="rotor_3" pos="0.2 0.2 0"/>
+      <site name="rotor_4" pos="-0.2 -0.2 0"/>
+    </body>
+  </worldbody>
+  <actuator>
+    <motor name="thrust_1" site="rotor_1" gear="0 0 1 0 0 -0.02"/>
+    <motor name="thrust_2" site="rotor_2" gear="0 0 1 0 0 -0.02"/>
+    <motor name="thrust_3" site="rotor_3" gear="0 0 1 0 0 0.02"/>
+    <motor name="thrust_4" site="rotor_4" gear="0 0 1 0 0 0.02"/>
+  </actuator>
+  <sensor>
+    <accelerometer name="imu_accelerometer" site="imu"/>
+    <gyro name="imu_gyro" site="imu"/>
+  </sensor>
+</mujoco>

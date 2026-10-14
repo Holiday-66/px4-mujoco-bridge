@@ -1,0 +1,5 @@
+# Direct runtime dependencies used for the documented validation.
+# This is not a complete transitive lock file.
+mujoco==3.4.0
+numpy==2.2.6
+pymavlink==2.4.49

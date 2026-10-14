@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "px4-mujoco-bridge"
+version = "0.1.0"
+description = "A local Simulator MAVLink bridge between stock PX4 SITL and MuJoCo"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["mujoco>=3.4,<4", "numpy>=1.26,<3", "pymavlink>=2.4.49,<3"]
+
+[project.optional-dependencies]
+test = ["pytest>=8,<9", "build>=1,<2"]
+
+[project.scripts]
+px4-mujoco = "px4_mujoco_bridge.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+px4_mujoco_bridge = ["models/*.xml"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
