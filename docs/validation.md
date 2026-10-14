@@ -2,7 +2,8 @@
 
 Local checks performed on **2026-10-14**. This records observed software behavior,
 not hardware-flight readiness, calibrated plant accuracy or general deployment
-certification. No public CI or package publication has occurred.
+certification. Public source publication and GitHub CI are recorded separately
+below; no package registry upload has occurred.
 
 ## Environment
 
@@ -149,6 +150,30 @@ There is a pinned-PX4 ground-truth acceleration logging scale caveat documented
 in [architecture](architecture.md#messages-and-units); do not use that field as
 an uncorrected SI acceleration benchmark.
 
+## Publication and GitHub CI
+
+The standalone source was published on **2026-10-14** to
+[Holiday-66/px4-mujoco-bridge](https://github.com/Holiday-66/px4-mujoco-bridge).
+The initial remote `main` matched the locally validated commit
+`398ad364c36aa5340b448669be9e4aaad90bfcbd`. Before that push, all three standalone
+commits and 48 unique reachable blobs were checked with the scoped source/history
+audit. No private research-project history or assets were uploaded.
+
+The [initial GitHub Actions run](https://github.com/Holiday-66/px4-mujoco-bridge/actions/runs/38537153484)
+completed successfully for **Python 3.10 and 3.12** on Ubuntu 22.04. Both jobs ran
+the headless unit suite, ready-to-publish source check, wheel/source-distribution
+build and installed-wheel model/CLI checks. This CI does not build PX4 or run the
+closed-loop flight demo; those were separate local and clean-container checks
+described above.
+
+The initial run reported Node.js 20 deprecation warnings for the old action
+versions. The workflow now pins the official Node.js 24-based v7 releases of
+`actions/checkout` and `actions/setup-python` to full commit hashes, retaining
+read-only repository permissions and disabling checkout credential persistence.
+See [Actions](https://github.com/Holiday-66/px4-mujoco-bridge/actions) for the
+results of subsequent commits. No GitHub Release, package registry, container or
+firmware binary was published.
+
 ## Reproduce
 
 From the bridge checkout with its venv active and a separate pinned PX4 build:
@@ -177,7 +202,6 @@ belongs to the installed package.
 - Other PX4 commits, custom airframes, models with more than four motors, motor
   lag, realistic aerodynamics, sensor biases, latency/loss or high-speed pacing.
 - Any physical device, real flight, HITL or safety-critical application.
-- GitHub Actions execution; the local workflow is prepared but unpublished.
 
 Keep these boundaries visible in a public release rather than extending the
 support claim from a successful build or one example flight.

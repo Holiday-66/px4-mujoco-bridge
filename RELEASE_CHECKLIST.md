@@ -1,12 +1,12 @@
 # Initial publication checklist
 
-Intended destination: **Holiday-66/px4-mujoco-bridge**.
+Published repository: [Holiday-66/px4-mujoco-bridge](https://github.com/Holiday-66/px4-mujoco-bridge).
 The maintainer confirmed the name, selected **BSD-3-Clause**, and identified the
 implementation as an independent personal project. Technical validation passed;
-publication was explicitly approved on 2026-10-14. Remote creation and the first
-push are still pending; local approval does not mean an upload has occurred.
+publication was explicitly approved on 2026-10-14. The standalone source was
+published that day, and the first GitHub Actions run passed on both Python versions.
 
-## Required before publication
+## Publication and follow-up checklist
 
 - [x] Record the maintainer's statement that this was independently developed,
   not work for a university or company. This is not an independent legal audit.
@@ -33,15 +33,19 @@ push are still pending; local approval does not mean an upload has occurred.
 - [x] Prepare public-facing clone/setup instructions and repository links.
 - [x] Configure the local `origin` for `Holiday-66/px4-mujoco-bridge` using the
   verified existing GitHub SSH identity.
-- [ ] Create the agreed empty public GitHub repository.
-- [ ] Push only this standalone repository's `main` branch and verify its SHA.
+- [x] Create the agreed empty public GitHub repository.
+- [x] Push only this standalone repository's `main` branch and verify its SHA:
+  `398ad364c36aa5340b448669be9e4aaad90bfcbd` on the initial publication.
 - [ ] Enable private vulnerability reporting in repository settings.
-- [ ] Verify GitHub Actions for Python 3.10 and 3.12 after the first push.
+- [x] Verify GitHub Actions for Python 3.10 and 3.12 after the first push:
+  [initial run passed](https://github.com/Holiday-66/px4-mujoco-bridge/actions/runs/38537153484).
 
 Technical validation passed on 2026-10-14; see the [record](docs/validation.md).
-The local-draft and pending-publication markers have now been resolved with the
-maintainer's approval. GitHub repository state, push completion, and remote CI
-must be verified separately. No package, container, or firmware upload is planned.
+The local-draft and pending-publication markers were resolved with the
+maintainer's approval. Public visibility and the initial remote commit were
+verified separately from local tests. No package registry, container, firmware
+binary or GitHub Release was published. Private vulnerability reporting remains
+an administrator follow-up; its enabled state has not been verified.
 
 ## Included in the source repository
 
